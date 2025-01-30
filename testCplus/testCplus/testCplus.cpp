@@ -22,18 +22,18 @@ float F(float b, int n = 10000) {
     return sum;
 }
 
-void calculate(float ei, float es, float nx, float o, float* p_suitable_parts, float* p_incorrigible_marriage, float* p_fixable_marriage, int n) {
+void calculate(float ei, float es, float nx, float o, int n) {
     float t2 = (es - nx) / o;
     float t1 = (ei - nx) / o;
-    *p_suitable_parts = (F(t2, n) - F(t1, n)) * 100;
+    float p_suitable_parts = (F(t2, n) - F(t1, n)) * 100;
 
     t2 = (ei - nx) / o;
     t1 = (nx - 3 * o - nx) / o;
-    *p_incorrigible_marriage = (F(t2, n) - F(t1, n)) * 100;
+    float p_incorrigible_marriage = (F(t2, n) - F(t1, n)) * 100;
 
     t2 = (nx + 3 * o - nx) / o;
     t1 = (es - nx) / o;
-    *p_fixable_marriage = (F(t2, n) - F(t1, n)) * 100;
+    float p_fixable_marriage = (F(t2, n) - F(t1, n)) * 100;
 }
 
 double test_normal_dist(int cycles)
@@ -41,9 +41,8 @@ double test_normal_dist(int cycles)
     auto start = std::chrono::high_resolution_clock::now();
 
 
-    float p_suitable_parts, p_incorrigible_marriage, p_fixable_marriage;
     for (int i = 0; i < cycles; i++) {
-        calculate(0.006f, 0.055f, 0.026f, 0.012f, &p_suitable_parts, &p_incorrigible_marriage, &p_fixable_marriage, 10000);
+        calculate(0.006f, 0.055f, 0.026f, 0.012f, 10000);
     }
 
 
