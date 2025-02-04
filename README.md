@@ -1,4 +1,4 @@
-testC - 2.2s
+testC - 2.2s (after optimization)
 
 testCplus - 3.5s
 
